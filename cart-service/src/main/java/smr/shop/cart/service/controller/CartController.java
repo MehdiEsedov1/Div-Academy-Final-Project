@@ -9,13 +9,6 @@ import smr.shop.libs.common.dto.response.EmptyResponse;
 
 import java.util.UUID;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/10/2024
- * Time: 2:45 PM
- */
-
 @RestController
 @RequestMapping("/api/1.0/cart")
 public class CartController {
@@ -25,9 +18,6 @@ public class CartController {
     public CartController(CartService cartService) {
         this.cartService = cartService;
     }
-
-
-//    ----------------------------------- Post -----------------------------------
 
     @PostMapping("/{productId}/{stockId}")
     @ResponseStatus(HttpStatus.CREATED)
@@ -51,16 +41,12 @@ public class CartController {
         return null;
     }
 
-//    ----------------------------------- Get -----------------------------------
-
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<CartResponse> getUserCart() {
         CartResponse cartResponse = cartService.getUserCart();
         return ResponseEntity.ok(cartResponse);
     }
-
-//    ----------------------------------- Delete -----------------------------------
 
     @DeleteMapping("/{cartItemId}/remove")
     @ResponseStatus(HttpStatus.OK)

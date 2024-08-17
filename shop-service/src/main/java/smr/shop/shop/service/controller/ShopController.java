@@ -24,8 +24,6 @@ public class ShopController {
         this.shopService = shopService;
     }
 
-//    ----------------------------------- Post -----------------------------------
-
     @PostMapping
     public ResponseEntity<EmptyResponse> createShop(@RequestBody CreateShopRequest request) {
         shopService.createShop(request);
@@ -34,8 +32,6 @@ public class ShopController {
                 .build();
         return ResponseEntity.ok(response);
     }
-
-//    ----------------------------------- Put or Patch -----------------------------------
 
     @PutMapping("/{shopId}")
     public ResponseEntity<EmptyResponse> updateShop(@PathVariable Long shopId, @RequestBody UpdateShopRequest request) {
@@ -73,8 +69,6 @@ public class ShopController {
         return ResponseEntity.ok(response);
     }
 
-//    ----------------------------------- Delete -----------------------------------
-
     @DeleteMapping("/{shopId}")
     public ResponseEntity<EmptyResponse> deleteShop(@PathVariable Long shopId) {
         shopService.deleteShop(shopId);
@@ -92,8 +86,6 @@ public class ShopController {
                 .build();
         return ResponseEntity.ok(response);
     }
-
-//    ----------------------------------- Get -----------------------------------
 
     @GetMapping
     public ResponseEntity<List<ShopResponse>> getAllShop(@RequestParam(value = "page", defaultValue = "0") Integer page) {

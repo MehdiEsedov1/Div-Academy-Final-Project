@@ -22,9 +22,6 @@ public class ProductQuestionController {
         this.productQuestionService = productQuestionService;
     }
 
-
-//    ----------------------------------- Get -----------------------------------
-
     @GetMapping("/product/{productId}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<ProductQuestionResponse>> getProductQuestions(@PathVariable Long productId,
@@ -33,8 +30,6 @@ public class ProductQuestionController {
 
         return ResponseEntity.ok(productQuestionResponseList);
     }
-
-//    ----------------------------------- Post -----------------------------------
 
     @PostMapping("/product/{productId}")
     @ResponseStatus(HttpStatus.CREATED)
@@ -47,8 +42,6 @@ public class ProductQuestionController {
         return ResponseEntity.ok(response);
     }
 
-//    ----------------------------------- Put or Patch -----------------------------------
-
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<EmptyResponse> updateProductQuestion(@PathVariable UUID id, @RequestBody UpdateProductQuestionRequest request) {
@@ -59,8 +52,6 @@ public class ProductQuestionController {
         return ResponseEntity.ok(response);
     }
 
-//    ----------------------------------- Delete -----------------------------------
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<EmptyResponse> deleteProductQuestion(@PathVariable UUID id) {
@@ -70,5 +61,4 @@ public class ProductQuestionController {
                 .build();
         return ResponseEntity.ok(response);
     }
-
 }

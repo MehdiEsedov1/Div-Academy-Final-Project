@@ -30,8 +30,6 @@ public class ProductReviewServiceImpl implements ProductReviewService {
 
     private final ProductReviewServiceMapper productReviewServiceMapper;
     private final ProductReviewRepository productReviewRepository;
-
-    // message broker
     private final ProductRatingChangeMessagePublisher productRatingChangeMessagePublisher;
     private final ProductReviewUpdateMessagePublisher productReviewUpdateMessagePublisher;
 
@@ -45,8 +43,6 @@ public class ProductReviewServiceImpl implements ProductReviewService {
         this.productReviewUpdateMessagePublisher = productReviewUpdateMessagePublisher;
     }
 
-//    ----------------------------------- Create or Add -----------------------------------
-
     @Override
     public List<ProductReviewResponse> getProductReviews(Long productId, Integer page) {
         Pageable pageable = PageRequest.of(page, ServiceConstants.pageSize);
@@ -54,9 +50,6 @@ public class ProductReviewServiceImpl implements ProductReviewService {
         return productReviewEntityList.stream().map(productReviewServiceMapper::productReviewEntityToProductReviewResponse).toList();
 
     }
-
-
-//    ----------------------------------- Create or Add -----------------------------------
 
     @Override
     @Transactional
@@ -77,9 +70,6 @@ public class ProductReviewServiceImpl implements ProductReviewService {
         ProductReviewMessageModel productReviewMessageModel = ProductReviewMessageModel.builder().productId(reviewEntity.getProductId()).build();
         productReviewUpdateMessagePublisher.publish(productReviewMessageModel);
     }
-
-
-//    ----------------------------------- Update -----------------------------------
 
     @Override
     @Transactional
@@ -108,9 +98,6 @@ public class ProductReviewServiceImpl implements ProductReviewService {
         productRatingChangeMessagePublisher.publish(productReviewMessageModel);
 
     }
-
-
-//    ----------------------------------- Extra -----------------------------------
 
     public ProductReviewEntity findById(UUID id) {
         return productReviewRepository.findById(id)

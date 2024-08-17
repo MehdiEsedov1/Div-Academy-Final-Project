@@ -8,13 +8,6 @@ import smr.shop.flash.service.model.FlashDealProductEntity;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/9/2024
- * Time: 7:59 PM
- */
-
 public interface FlashDealProductService {
 
     FlashDealProductResponse createFlashDealProduct(FlashDealProductCreateRequest request);

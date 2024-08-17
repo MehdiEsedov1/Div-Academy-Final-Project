@@ -6,12 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import smr.shop.libs.common.messaging.BaseMessageModel;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/11/2024
- * Time: 1:45 AM
- */
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

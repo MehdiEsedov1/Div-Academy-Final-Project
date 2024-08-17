@@ -14,13 +14,6 @@ import smr.shop.product.service.model.valueobject.ProductStatus;
 
 import java.util.List;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/11/2024
- * Time: 12:49 AM
- */
-
 public interface ProductService {
 
     void createProduct(ProductCreateRequest request);

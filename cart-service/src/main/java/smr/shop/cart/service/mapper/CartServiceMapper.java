@@ -11,12 +11,6 @@ import smr.shop.libs.grpc.product.stock.ProductStockGrpcResponse;
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/10/2024
- * Time: 1:24 PM
- */
 @Component
 public class CartServiceMapper {
 

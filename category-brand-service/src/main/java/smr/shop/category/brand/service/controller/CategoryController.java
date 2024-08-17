@@ -13,12 +13,6 @@ import smr.shop.libs.common.dto.response.EmptyResponse;
 
 import java.util.List;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/15/2024
- * Time: 10:03 AM
- */
 @RestController
 @RequestMapping(value = "/api/1.0/category")
 @Slf4j
@@ -29,8 +23,6 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
-
-//    -------------------------------------- POST --------------------------------------
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -43,8 +35,6 @@ public class CategoryController {
 
         return ResponseEntity.ok(response);
     }
-
-//    -------------------------------------- PUT --------------------------------------
 
     @PutMapping("/{categoryId}")
     @ResponseStatus(HttpStatus.OK)
@@ -60,8 +50,6 @@ public class CategoryController {
         return ResponseEntity.ok(response);
     }
 
-//    -------------------------------------- DELETE --------------------------------------
-
     @DeleteMapping("/{categoryId}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<EmptyResponse> deleteCategory(@PathVariable Long categoryId) {
@@ -72,8 +60,6 @@ public class CategoryController {
 
         return ResponseEntity.ok(response);
     }
-
-//    -------------------------------------- GET --------------------------------------
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)

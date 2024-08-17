@@ -1,9 +1,6 @@
 package smr.shop.cart.service.service.impl;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import smr.discount.libs.grpc.product.discount.DiscountGrpcResponse;
@@ -31,7 +28,6 @@ import smr.shop.libs.grpc.coupon.CouponGrpcResponse;
 import smr.shop.libs.grpc.product.ProductGrpcResponse;
 import smr.shop.libs.grpc.product.stock.ProductStockGrpcResponse;
 
-import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -39,28 +35,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/10/2024
- * Time: 1:28 PM
- */
-
-
 @Service
 public class CartServiceImpl implements CartService {
 
-    // repository
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
-
-    // mapper
     private final CartServiceMapper cartServiceMapper;
-
-    // helper
     private final CartServiceHelper cartServiceHelper;
-
-    // rpc
     private final ProductGrpcClient productGrpcClient;
     private final ProductStockGrpcClient productStockGrpcClient;
     private final CouponGrpcClient couponGrpcClient;
@@ -81,14 +62,11 @@ public class CartServiceImpl implements CartService {
         this.couponGrpcClient = couponGrpcClient;
     }
 
-
-//    ----------------------------------- Create or Add -----------------------------------
-
     @Override
     @Transactional
     public void addProductToCart(Long productId, UUID stockId) {
         UUID userId = UserHelper.getUserId();
-        if(productId == 0) {
+        if (productId == 0) {
 
             throw new CartServiceException("Test exception", HttpStatus.BAD_REQUEST);
         }
@@ -148,10 +126,7 @@ public class CartServiceImpl implements CartService {
         }
         cartItemEntity.setQuantity(cartItemEntity.getQuantity() + 1);
         cartItemRepository.save(cartItemEntity);
-
     }
-
-//    ----------------------------------- Delete -----------------------------------
 
     @Override
     @Transactional
@@ -171,7 +146,6 @@ public class CartServiceImpl implements CartService {
         UUID userId = UserHelper.getUserId();
         Optional<CartEntity> cartEntity = cartRepository.findByUserId(userId);
         cartEntity.ifPresent(entity -> cartItemRepository.deleteAllByCartId(entity.getId()));
-
     }
 
     @Override
@@ -183,7 +157,6 @@ public class CartServiceImpl implements CartService {
             throw new CartServiceException("Item not found with id:" + cartItemId, HttpStatus.NOT_FOUND);
         }
         cartItemRepository.deleteById(cartItemId);
-
     }
 
     @Override
@@ -197,10 +170,9 @@ public class CartServiceImpl implements CartService {
         if (cartItemEntity.getQuantity() > 1) {
             cartItemEntity.setQuantity(cartItemEntity.getQuantity() - 1);
             cartItemRepository.save(cartItemEntity);
-        }else {
+        } else {
             deleteCartItem(cartItemEntity.getId());
         }
-
     }
 
     @Override
@@ -223,16 +195,12 @@ public class CartServiceImpl implements CartService {
         cartRepository.removeCouponInCart(message.getCode());
     }
 
-//    ----------------------------------- Get -----------------------------------
-
     @Override
     public CartResponse getUserCart() {
         UUID userId = UserHelper.getUserId();
         CartEntity cartEntity = cartRepository.findByUserId(userId).orElseGet(() -> CartEntity.builder().id(UUID.randomUUID()).build());
         return getCartResponse(cartEntity);
     }
-
-//    ----------------------------------- Extra -----------------------------------
 
     @Override
     public CartItemEntity findItemById(UUID cartItemId) {

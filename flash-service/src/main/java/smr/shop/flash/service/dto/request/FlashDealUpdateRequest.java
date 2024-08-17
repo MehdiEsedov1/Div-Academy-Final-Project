@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Size;
 import lombok.Value;
 
 import java.time.ZonedDateTime;
-
 @Value
 public class FlashDealUpdateRequest {
 

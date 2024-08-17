@@ -5,12 +5,6 @@ import lombok.Value;
 
 import java.util.List;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/11/2024
- * Time: 12:26 AM
- */
 @Value
 @Builder
 public class ProductResponse {

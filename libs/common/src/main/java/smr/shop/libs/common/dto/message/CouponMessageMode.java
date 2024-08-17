@@ -16,12 +16,8 @@ import java.util.UUID;
 @Data
 public class CouponMessageMode implements BaseMessageModel {
 
-//    TODO Burda CouponMessageModel elemeye calisdim adini
-//     ama conflig olduqunu ve bu adda basqa bi model olduqunu dedi buna bi baxarsan birden nese siliner deye risk elemedim
 
     private UUID id;
-
-//    private CouponType type;
 
     private Long shopId;
 

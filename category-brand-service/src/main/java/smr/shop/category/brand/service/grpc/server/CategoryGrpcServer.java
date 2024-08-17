@@ -1,12 +1,10 @@
 package smr.shop.category.brand.service.grpc.server;
 
-import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 import smr.shop.category.brand.service.service.CategoryService;
 import smr.shop.libs.grpc.category.CategoryGrpcResponse;
 import smr.shop.libs.grpc.category.CategoryServiceGrpc;
 import smr.shop.libs.grpc.object.CategoryGrpcId;
-
 
 @GrpcService
 public class CategoryGrpcServer extends CategoryServiceGrpc.CategoryServiceImplBase {

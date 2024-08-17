@@ -6,12 +6,6 @@ import lombok.*;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/14/2024
- * Time: 4:20 PM
- */
 @Entity
 @Builder
 @Data

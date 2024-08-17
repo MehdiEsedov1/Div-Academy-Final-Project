@@ -32,13 +32,6 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
-
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/9/2024
- * Time: 2:50 PM
- */
 @Service
 public class CouponServiceImpl implements CouponService {
 

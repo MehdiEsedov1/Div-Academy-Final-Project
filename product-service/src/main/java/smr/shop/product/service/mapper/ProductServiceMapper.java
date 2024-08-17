@@ -15,12 +15,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Arrays;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/11/2024
- * Time: 1:12 AM
- */
 @Component
 public class ProductServiceMapper {
 

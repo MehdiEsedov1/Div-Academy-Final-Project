@@ -25,8 +25,6 @@ public class BrandController {
         this.brandService = brandService;
     }
 
-//    -------------------------------------- POST --------------------------------------
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<EmptyResponse> createBrand(@RequestBody @Valid BrandCreateRequest brandCreateRequest) {
@@ -38,8 +36,6 @@ public class BrandController {
 
         return ResponseEntity.ok(response);
     }
-
-//    -------------------------------------- PUT --------------------------------------
 
     @PutMapping("/{brandId}")
     @ResponseStatus(HttpStatus.OK)
@@ -66,15 +62,11 @@ public class BrandController {
         return ResponseEntity.ok(response);
     }
 
-//    -------------------------------------- GET --------------------------------------
-
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<BrandResponse>> getAllBrand(@RequestParam(name = "page", defaultValue = "0") Integer page) {
         return ResponseEntity.ok(brandService.getAllBrands(page));
     }
-
-//    -------------------------------------- DELETE --------------------------------------
 
     @DeleteMapping("/{brandId}/image")
     @ResponseStatus(HttpStatus.OK)

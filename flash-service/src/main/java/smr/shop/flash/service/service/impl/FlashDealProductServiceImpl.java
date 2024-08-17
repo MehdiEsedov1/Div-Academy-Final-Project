@@ -17,13 +17,6 @@ import smr.shop.libs.common.constant.ServiceConstants;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/9/2024
- * Time: 8:00 PM
- */
-
 @Service
 public class FlashDealProductServiceImpl implements FlashDealProductService {
     private final FlashDealProductRepository flashDealProductRepository;

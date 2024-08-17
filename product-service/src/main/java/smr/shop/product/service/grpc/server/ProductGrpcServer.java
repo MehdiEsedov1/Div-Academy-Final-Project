@@ -1,6 +1,5 @@
 package smr.shop.product.service.grpc.server;
 
-import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 import smr.shop.libs.grpc.object.ProductGrpcId;
 import smr.shop.libs.grpc.product.ProductGrpcResponse;

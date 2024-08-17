@@ -11,13 +11,6 @@ import smr.shop.product.service.model.valueobject.ProductStatus;
 
 import java.util.Optional;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/11/2024
- * Time: 12:41 AM
- */
-
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     Page<ProductEntity> findAllByBrandId(Long brandId, Pageable pageable);
 

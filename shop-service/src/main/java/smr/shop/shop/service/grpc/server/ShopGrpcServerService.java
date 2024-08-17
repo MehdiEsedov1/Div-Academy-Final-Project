@@ -1,6 +1,5 @@
 package smr.shop.shop.service.grpc.server;
 
-import io.grpc.stub.StreamObserver;
 import org.springframework.stereotype.Component;
 import smr.shop.libs.grpc.object.ShopGrpcId;
 import smr.shop.libs.grpc.object.UserGrpcId;

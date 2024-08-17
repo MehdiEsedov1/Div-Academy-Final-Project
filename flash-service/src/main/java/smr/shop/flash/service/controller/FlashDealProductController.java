@@ -10,14 +10,6 @@ import smr.shop.flash.service.service.FlashDealProductService;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/9/2024
- * Time: 8:04 PM
- */
-
-
 @RestController
 @RequestMapping("/api/1.0/flash-deal")
 public class FlashDealProductController {

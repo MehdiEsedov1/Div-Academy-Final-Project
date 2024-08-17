@@ -9,13 +9,6 @@ import smr.shop.flash.service.service.FlashDealService;
 
 import java.util.List;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/9/2024
- * Time: 7:30 PM
- */
-
 @RestController
 @RequestMapping("/api/1.0/flash-deal")
 public class FlashDealController {

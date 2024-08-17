@@ -12,12 +12,6 @@ import smr.shop.product.service.service.ProductService;
 
 import java.util.List;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/11/2024
- * Time: 6:42 AM
- */
 @RestController
 @RequestMapping("/api/1.0/product")
 public class ProductController {
@@ -27,8 +21,6 @@ public class ProductController {
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
-
-//    ---------------------------------- POST ----------------------------------
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -57,8 +49,6 @@ public class ProductController {
         EmptyResponse response = EmptyResponse.builder().message("successfully added image to product productId:" + productId).build();
         return ResponseEntity.ok(response);
     }
-
-//    ---------------------------------- PATCH ----------------------------------
 
     @PatchMapping("/{productId}")
     @ResponseStatus(HttpStatus.OK)
@@ -97,8 +87,6 @@ public class ProductController {
 
     }
 
-//    ---------------------------------- DELETE ----------------------------------
-
     @DeleteMapping("/{productId}/thumbnail")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<EmptyResponse> removeProductThumbNail(@PathVariable Long productId){
@@ -124,8 +112,6 @@ public class ProductController {
         EmptyResponse response = EmptyResponse.builder().message("successfully deleted product productId:" + productId).build();
         return ResponseEntity.ok(response);
     }
-
-//    ---------------------------------- GET ----------------------------------
 
     @GetMapping("/{productId}")
     @ResponseStatus(HttpStatus.OK)
@@ -173,7 +159,5 @@ public class ProductController {
                                                                      @RequestParam(name = "page", defaultValue = "0") Integer page){
         List<ProductResponse> responseList = productService.getAllProductsByCategoryId(categoryId, page);
         return ResponseEntity.ok(responseList);
-
     }
-
 }

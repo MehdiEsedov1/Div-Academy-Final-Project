@@ -12,13 +12,6 @@ import smr.shop.libs.grpc.coupon.CouponGrpcResponse;
 
 import java.util.UUID;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/9/2024
- * Time: 3:13 PM
-import smr.shop.coupon.service.dto.response.CouponUsageResponse;
- */
 @Component
 public class CouponServiceMapper {
     public CouponEntity couponCreateResponseToCouponEntity(CouponCreateRequest request) {

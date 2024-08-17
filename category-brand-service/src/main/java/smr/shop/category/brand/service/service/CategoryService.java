@@ -9,13 +9,6 @@ import smr.shop.libs.grpc.object.CategoryGrpcId;
 
 import java.util.List;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/14/2024
- * Time: 4:35 PM
- */
-
 public interface CategoryService {
 
     void createCategory(CategoryCreateRequest request);

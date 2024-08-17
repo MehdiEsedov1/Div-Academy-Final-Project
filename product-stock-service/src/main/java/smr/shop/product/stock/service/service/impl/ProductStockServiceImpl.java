@@ -28,20 +28,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
 @Service
 public class ProductStockServiceImpl implements ProductStockService {
-
-    // repository
     private final ProductStockRepository productStockRepository;
-
-    // mappers
     private final ProductStockServiceMapper productStockServiceMapper;
-
-    // rpc
     private final ShopGrpcClient shopGrpcClient;
     private final ProductGrpcClient productGrpcClient;
-
     public ProductStockServiceImpl(ProductStockRepository productStockRepository,
                                    ProductStockServiceMapper productStockServiceMapper,
                                    ShopGrpcClient shopGrpcClient,
@@ -168,6 +160,5 @@ public class ProductStockServiceImpl implements ProductStockService {
         if (!shopGrpcResponse.getUserId().equals(userId.toString())) {
             throw new ProductStockServiceException("you dont have a permission delete this stock with id: " + productStockEntity.getId(), HttpStatus.FORBIDDEN);
         }
-
     }
 }

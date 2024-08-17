@@ -19,9 +19,6 @@ public class WishlistController {
         this.wishlistService = wishlistService;
     }
 
-
-//    ----------------------------------- Post -----------------------------------
-
     @PostMapping("/{productId}/add")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<EmptyResponse> addProductToWishlist(@PathVariable Long productId) {
@@ -29,8 +26,6 @@ public class WishlistController {
         EmptyResponse response = EmptyResponse.builder().message("successfully added product to wishlist with productId: " + productId).build();
         return ResponseEntity.ok(response);
     }
-
-//    ----------------------------------- Delete -----------------------------------
 
     @DeleteMapping("/{wishlistId}/remove")
     @ResponseStatus(HttpStatus.OK)
@@ -42,13 +37,10 @@ public class WishlistController {
         return ResponseEntity.ok(response);
     }
 
-//    ----------------------------------- Get -----------------------------------
-
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<WishlistResponse>> getWishlist(@RequestParam(value = "page", defaultValue = "0") Integer page) {
         List<WishlistResponse> wishlistProducts = wishlistService.getAllWishlistProducts(page);
         return ResponseEntity.ok(wishlistProducts);
     }
-
 }

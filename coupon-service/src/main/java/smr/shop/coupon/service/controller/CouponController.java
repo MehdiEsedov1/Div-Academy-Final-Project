@@ -12,12 +12,6 @@ import smr.shop.libs.common.dto.response.EmptyResponse;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/9/2024
- * Time: 5:53 PM
- */
 @RestController
 @RequestMapping("/api/1.0/coupon")
 public class CouponController {
@@ -27,8 +21,6 @@ public class CouponController {
     public CouponController(CouponService couponService) {
         this.couponService = couponService;
     }
-
-//    ----------------------------------- Post -----------------------------------
 
     @PostMapping
     public ResponseEntity<EmptyResponse> createCoupon(@RequestBody @Valid CouponCreateRequest request) {
@@ -48,8 +40,6 @@ public class CouponController {
         return ResponseEntity.ok(response);
     }
 
-//    ----------------------------------- Patch -----------------------------------
-
     @PatchMapping("/{couponId}")
     public ResponseEntity<EmptyResponse> updateCoupon(@PathVariable UUID couponId, @RequestBody @Valid CouponUpdateRequest request) {
         couponService.updateCoupon(couponId, request);
@@ -68,8 +58,6 @@ public class CouponController {
         return ResponseEntity.ok(response);
     }
 
-//    ----------------------------------- Delete -----------------------------------
-
     @DeleteMapping("/{couponId}")
     public ResponseEntity<EmptyResponse> deleteCoupon(@PathVariable UUID couponId) {
         couponService.deleteCoupon(couponId);
@@ -78,6 +66,7 @@ public class CouponController {
                 .build();
         return ResponseEntity.ok(response);
     }
+
     @DeleteMapping("/admin/{couponId}")
     public ResponseEntity<EmptyResponse> deleteCouponWithAdmin(@PathVariable UUID couponId) {
         couponService.deleteCouponWithAdmin(couponId);
@@ -86,8 +75,6 @@ public class CouponController {
                 .build();
         return ResponseEntity.ok(response);
     }
-
-//    ----------------------------------- Get -----------------------------------
 
     @GetMapping
     public ResponseEntity<List<CouponResponse>> getAllShopCoupon(@RequestParam(value = "page", defaultValue = "0") Integer page) {
@@ -106,5 +93,4 @@ public class CouponController {
         CouponResponse couponResponse = couponService.getCoupon(couponId);
         return ResponseEntity.ok(couponResponse);
     }
-
 }

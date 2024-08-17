@@ -28,13 +28,10 @@ import java.util.UUID;
 @Service
 public class ProductQuestionServiceImpl implements ProductQuestionService {
 
-    // repository
     private final ProductQuestionRepository productQuestionRepository;
 
-    // service mapper
     private final ProductReviewServiceMapper productReviewServiceMapper;
 
-    // grpc
     private final ProductGrpcClient productGrpcClient;
 
     public ProductQuestionServiceImpl(ProductQuestionRepository productQuestionRepository,
@@ -44,9 +41,6 @@ public class ProductQuestionServiceImpl implements ProductQuestionService {
         this.productReviewServiceMapper = productReviewServiceMapper;
         this.productGrpcClient = productGrpcClient;
     }
-
-
-//    ----------------------------------- Create or Add -----------------------------------
 
     @Override
     @Transactional
@@ -67,8 +61,6 @@ public class ProductQuestionServiceImpl implements ProductQuestionService {
         productReviewServiceMapper.productQuestionEntityToProductQuestionResponse(productQuestionEntity);
     }
 
-    //    ----------------------------------- Get -----------------------------------
-
     @Override
     public List<ProductQuestionResponse> getProductQuestions(Long productId, Integer page) {
         Pageable pageable = PageRequest.of(page, ServiceConstants.pageSize);
@@ -76,8 +68,6 @@ public class ProductQuestionServiceImpl implements ProductQuestionService {
         return productQuesntionEntityList.stream().map(productReviewServiceMapper::productQuestionEntityToProductQuestionResponse).toList();
 
     }
-
-//    ----------------------------------- Update -----------------------------------
 
     @Override
     @Transactional
@@ -90,8 +80,6 @@ public class ProductQuestionServiceImpl implements ProductQuestionService {
         productReviewServiceMapper.productQuestionEntityToProductQuestionResponse(question);
     }
 
-//    ----------------------------------- Delete -----------------------------------
-
     @Override
     @Transactional
     public void deleteProductQuestion(UUID id) {
@@ -101,8 +89,6 @@ public class ProductQuestionServiceImpl implements ProductQuestionService {
         question.setUpdatedAt(ZonedDateTime.of(LocalDateTime.now(), ZoneId.of(ServiceConstants.UTC)));
         productQuestionRepository.save(question);
     }
-
-//    ----------------------------------- Helper -----------------------------------
 
     public ProductQuestionEntity findById(UUID id) {
         return productQuestionRepository.findById(id)

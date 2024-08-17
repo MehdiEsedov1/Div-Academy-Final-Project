@@ -36,16 +36,9 @@ import java.util.UUID;
 
 @Service
 public class ShopServiceImpl implements ShopService {
-    // repository
     private final ShopRepository shopRepository;
-
-    // service mapper
     private final ShopServiceMapper shopServiceMapper;
-
-    // rpc
     private final UploadGrpcClient uploadGrpcClient;
-
-    // message Broker
     private final ShopStatusChangeMessagePublisher shopStatusChangeMessagePublisher;
     private final ImageDeleteMessagePublisher imageDeleteMessagePublisher;
 
@@ -60,9 +53,6 @@ public class ShopServiceImpl implements ShopService {
         this.shopStatusChangeMessagePublisher = shopStatusChangeMessagePublisher;
         this.imageDeleteMessagePublisher = imageDeleteMessagePublisher;
     }
-
-
-//    ----------------------------------- Create or Add -----------------------------------
 
     @Override
     @Transactional
@@ -79,8 +69,6 @@ public class ShopServiceImpl implements ShopService {
         shopEntity.setUpdatedAt(ZonedDateTime.now(ServiceConstants.ZONE_ID));
         shopRepository.save(shopEntity);
     }
-
-//    ----------------------------------- Update -----------------------------------
 
     @Override
     @Transactional
@@ -128,8 +116,6 @@ public class ShopServiceImpl implements ShopService {
         shopRepository.save(shopEntity);
     }
 
-//    ----------------------------------- Delete -----------------------------------
-
     @Override
     @Transactional
     public void deleteShop(Long shopId) {
@@ -158,8 +144,6 @@ public class ShopServiceImpl implements ShopService {
         UploadMessageModel uploadMessageModel = shopServiceMapper.shopEntityToUploadMessageModel(savedShopEntity.getLogo());
         imageDeleteMessagePublisher.publish(uploadMessageModel);
     }
-
-//    ----------------------------------- Get -----------------------------------
 
     @Override
     public ShopAddressResponse getShopAddress(Long shopId) {
@@ -197,8 +181,6 @@ public class ShopServiceImpl implements ShopService {
         return shopRepository.findAll(pageable).map(shopServiceMapper::shopEntitytoShopResponse).toList();
     }
 
-//    ----------------------------------- Extra -----------------------------------
-
     @Override
     public ShopEntity findById(Long shopId) {
         return shopRepository.findById(shopId)
@@ -211,5 +193,4 @@ public class ShopServiceImpl implements ShopService {
             throw new ShopServiceException("you dont have access to manipulate shop with id: " + shopEntity.getId(), HttpStatus.BAD_REQUEST);
         }
     }
-
 }

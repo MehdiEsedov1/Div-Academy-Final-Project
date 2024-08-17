@@ -19,15 +19,11 @@ public class UserAddressServiceController {
         this.userAddressService = userAddressService;
     }
 
-//    ----------------------------------- Post -----------------------------------
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CreateUserAddressRequest createUserAddress(@RequestBody @Valid CreateUserAddressRequest request) {
         return userAddressService.createUserAddress(request);
     }
-
-//    ----------------------------------- Put or Patch -----------------------------------
 
     @PatchMapping("/{userAddressId}")
     public void updateUserAddress(@PathVariable UUID userAddressId,
@@ -35,18 +31,13 @@ public class UserAddressServiceController {
         userAddressService.updateUserAddress(userAddressId, updateUserAddressRequest);
     }
 
-//    ----------------------------------- Delete -----------------------------------
-
     @DeleteMapping("/{userAddressId}")
     public void deleteUserAddressById(@PathVariable UUID userAddressId) {
         userAddressService.deleteUserAddressById(userAddressId);
     }
 
-//    ----------------------------------- Get -----------------------------------
-
     @GetMapping("/{userAddressId}")
     public GetUserAddressResponse getUserAddressById(@PathVariable UUID userAddressId) {
         return userAddressService.getUserAddressById(userAddressId);
     }
-
 }

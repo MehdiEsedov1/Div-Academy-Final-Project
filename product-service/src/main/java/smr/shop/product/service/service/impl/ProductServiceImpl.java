@@ -35,34 +35,17 @@ import smr.shop.product.service.service.ProductService;
 
 import java.util.List;
 
-/**
- * Author: Ali Gadashov
- * Version: v1.0
- * Date: 5/11/2024
- * Time: 12:49 AM
- */
 @Service
 public class ProductServiceImpl implements ProductService {
-
-    // TODO Fix discount id problem
-
-    // repository
     private final ProductRepository productRepository;
-
-    // service mapper
     private final ProductServiceMapper productServiceMapper;
-
-    // rpc
     private final UploadGrpcClient uploadGrpcClient;
     private final BrandGrpcClient brandGrpcClient;
     private final CategoryGrpcClient categoryGrpcClient;
     private final ShopGrpcClient shopGrpcClient;
     private final DiscountGrpcClient discountGrpcClient;
-
-    // message broker
     private final ProductStockCreateMessagePublisher productStockCreateMessagePublisher;
     private final ProductStockGrpcClient productStockGrpcClient;
-
     public ProductServiceImpl(ProductRepository productRepository,
                               ProductServiceMapper productServiceMapper,
                               UploadGrpcClient uploadGrpcClient,
@@ -82,9 +65,6 @@ public class ProductServiceImpl implements ProductService {
         this.productStockCreateMessagePublisher = productStockCreateMessagePublisher;
         this.productStockGrpcClient = productStockGrpcClient;
     }
-
-
-// --------------------------------------- Create or Add ---------------------------------------
 
     @Override
     @Transactional
@@ -127,8 +107,6 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
 
     }
-
-// --------------------------------------- Delete ---------------------------------------
 
     @Override
     @Transactional
@@ -176,8 +154,6 @@ public class ProductServiceImpl implements ProductService {
     public void deleteProductsByCategory(CategoryMessageModel categoryMessageModel) {
         productRepository.updateStatusByCategoryId(ProductStatus.DELETED, categoryMessageModel.getId());
     }
-
-// --------------------------------------- Get ---------------------------------------
 
     @Override
     public ProductResponse getProductById(Long productId) {
@@ -271,9 +247,6 @@ public class ProductServiceImpl implements ProductService {
         return productEntities.stream().map(productServiceMapper::productEntityToProductResponse).toList();
     }
 
-// --------------------------------------- Update ---------------------------------------
-
-
     @Override
     @Transactional
     public void updateProduct(Long productId, ProductUpdateRequest request) {
@@ -312,9 +285,6 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
     }
 
-
-// --------------------------------------- Extra ---------------------------------------
-
     public ProductEntity findById(Long productId) {
 
         return productRepository.findById(productId)
@@ -328,6 +298,4 @@ public class ProductServiceImpl implements ProductService {
             throw new ProductServiceException("Your don't have access to modify this product", HttpStatus.NOT_FOUND);
         }
     }
-
-
 }

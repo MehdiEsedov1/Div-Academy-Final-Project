@@ -22,8 +22,6 @@ public class ProductReviewController {
         this.productReviewService = productReviewService;
     }
 
-//    ----------------------------------- Post -----------------------------------
-
     @GetMapping("/product/{productId}")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<List<ProductReviewResponse>> getProductReviews(@PathVariable Long productId,
@@ -32,8 +30,6 @@ public class ProductReviewController {
 
         return ResponseEntity.ok(productReviewResponseList);
     }
-
-//    ----------------------------------- Post -----------------------------------
 
     @PostMapping("/product/{productId}")
     @ResponseStatus(HttpStatus.CREATED)
@@ -45,8 +41,6 @@ public class ProductReviewController {
                 .build();
         return ResponseEntity.ok(response);
     }
-
-//    ----------------------------------- Put or Patch -----------------------------------
 
     @PutMapping("/{reviewId}")
     @ResponseStatus(HttpStatus.OK)
