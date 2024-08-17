@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "smr.shop.libs.grpc.product.shop";
+option java_multiple_files = true;
+
+import "object/ShopId.proto";
+import "object/UserId.proto";
+
+message ShopGrpcResponse {
+  int64 id = 1;
+  string userId = 2;
+  string slug = 3;
+  string name = 4;
+  string logo = 5;
+
+}
+
+service ShopService {
+  rpc getShopByShopId(ShopGrpcId) returns  (ShopGrpcResponse);
+  rpc getShopByUserId(UserGrpcId) returns  (ShopGrpcResponse);
+}

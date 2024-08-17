@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_package = "smr.discount.libs.grpc.product.discount";
+option java_multiple_files = true;
+import "object/DiscountId.proto";
+
+message DiscountGrpcResponse {
+  string id = 1;
+  double amount = 2;
+  bool isDeleted= 3;
+
+}
+
+service DiscountService {
+  rpc getDiscountById(DiscountGrpcId) returns  (DiscountGrpcResponse);
+}

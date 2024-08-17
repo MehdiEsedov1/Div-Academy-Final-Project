@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: postgres-coupon
+    image: postgres:16
+    ports:
+      - "9102:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    expose:
+      - 9102
+    volumes:
+      - coupon-volume:/var/lib/postgresql/data
+volumes:
+  coupon-volume:

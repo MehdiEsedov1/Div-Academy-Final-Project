@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: postgres-product-stock
+    image: postgres:16
+    ports:
+      - "9012:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    expose:
+      - 9012
+    volumes:
+      - product-stock-volume:/var/lib/postgresql/data
+volumes:
+  product-stock-volume:

@@ -1,0 +1,15 @@
+services:
+  postgres:
+    container_name: postgres-category-brand
+    image: postgres:16
+    ports:
+      - "9101:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    expose:
+      - 9101
+    volumes:
+      - category-brand-volume:/var/lib/postgresql/data
+volumes:
+  category-brand-volume:

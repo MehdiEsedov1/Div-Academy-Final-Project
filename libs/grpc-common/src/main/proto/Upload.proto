@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option java_package = "smr.shop.libs.grpc.upload";
+option java_multiple_files = true;
+
+import "object/UploadId.proto";
+
+message UploadGrpcResponse {
+  string id = 1;
+  string url = 2;
+}
+
+service UploadService {
+  rpc getUploadById(UploadGrpcId) returns (UploadGrpcResponse);
+}

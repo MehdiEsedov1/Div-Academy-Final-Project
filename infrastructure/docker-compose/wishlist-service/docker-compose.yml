@@ -1,0 +1,15 @@
+services:
+  wishlist-service-postgres:
+    container_name: postgres-wishlist
+    image: postgres:16
+    ports:
+      - "9017:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+    expose:
+      - 9017
+    volumes:
+      - wishlist-volume:/var/lib/postgresql/data
+volumes:
+  wishlist-volume:

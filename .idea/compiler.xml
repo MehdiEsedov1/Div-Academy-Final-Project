@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cart-service" />
+        <module name="config-service" />
+        <module name="coupon-service" />
+        <module name="category-brand-service" />
+        <module name="flash-service" />
+        <module name="product-service" />
+        <module name="shop-service" />
+        <module name="product-stock-service" />
+        <module name="user-service" />
+        <module name="wishlist-service" />
+        <module name="discovery-service" />
+        <module name="grpc-common" />
+        <module name="notification-service" />
+        <module name="ticket-service" />
+        <module name="payment-service" />
+        <module name="common" />
+        <module name="discount-service" />
+        <module name="gateway-service" />
+        <module name="product-review-service" />
+        <module name="upload-service" />
+        <module name="order-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cart-service" options="-parameters" />
+      <module name="category-brand-service" options="-parameters" />
+      <module name="common" options="-parameters" />
+      <module name="config-service" options="-parameters" />
+      <module name="coupon-service" options="-parameters" />
+      <module name="discount-service" options="-parameters" />
+      <module name="discovery-service" options="-parameters" />
+      <module name="flash-service" options="-parameters" />
+      <module name="gateway-service" options="-parameters" />
+      <module name="grpc-common" options="-parameters" />
+      <module name="libs" options="-parameters" />
+      <module name="management" options="-parameters" />
+      <module name="notification-service" options="-parameters" />
+      <module name="order-service" options="-parameters" />
+      <module name="payment-service" options="-parameters" />
+      <module name="product-review-service" options="-parameters" />
+      <module name="product-service" options="-parameters" />
+      <module name="product-stock-service" options="-parameters" />
+      <module name="shop-service" options="-parameters" />
+      <module name="ticket-service" options="-parameters" />
+      <module name="upload-service" options="-parameters" />
+      <module name="user-service" options="-parameters" />
+      <module name="wishlist-service" options="-parameters" />
+    </option>
+  </component>
+</project>
